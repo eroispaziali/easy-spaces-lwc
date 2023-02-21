@@ -50,18 +50,18 @@ public class ReservationManagerControllerTest {
         List<CustomerServices.Customer> contacts = ReservationManagerController.getCustomerList(
             'Contact'
         );
-        system.assertNotEquals(contacts, null);
+        system.assertNotEquals(contacts, null, 'Assert that contacts are not null.');
         List<CustomerServices.Customer> leads = ReservationManagerController.getCustomerList(
             'Lead'
         );
-        system.assertNotEquals(leads, null);
-        system.assertNotEquals(contacts, leads);
+        system.assertNotEquals(leads, null, 'Assert that the two lists are not null.');
+        system.assertNotEquals(contacts, leads, 'Assert that contacts and leads are not equal.');
     }
 
     @isTest
     static void canFetchOpenReservs() {
         List<Reservation__c> reservs = ReservationManagerController.getOpenReservations();
-        system.assertNotEquals(reservs, null);
-        system.assertEquals(reservs.size(), 10);
+        system.assertNotEquals(reservs, null, 'Assert that all the reservs are not null.');
+        system.assertEquals(reservs.size(), 10, 'Assert that the number of reservs is equal to 10.');
     }
 }

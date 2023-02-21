@@ -36,10 +36,10 @@ public class MarketServicesTest {
         List<Market__c> markets = [SELECT Id FROM Market__c LIMIT 5];
         List<Space__c> one = marketServices.getRelatedSpaces(markets[0].Id);
         List<Space__c> two = marketServices.getRelatedSpaces(markets[3].Id);
-        system.assertNotEquals(one, null);
-        system.assertNotEquals(two, null);
-        system.assertNotEquals(one, two);
-        system.assertEquals(one.size(), 12);
-        system.assertEquals(two.size(), 12);
+        system.assertNotEquals(one, null, 'Assert that one is not null.');
+        system.assertNotEquals(two, null, 'Assert that two objects are not equal.');
+        system.assertNotEquals(one, two, 'Assert that two objects are not equals.');
+        system.assertEquals(one.size(), 12, 'Asserts that the size of the two arrays is equal to 12.');
+        system.assertEquals(two.size(), 12, 'Asserts that the size of the two arrays is equal to 12.');
     }
 }
